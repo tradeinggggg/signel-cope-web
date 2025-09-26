@@ -1,0 +1,5 @@
+{
+  "assets": ["EURUSD", "GBPUSD", "US30"],
+  "telegram_bot_token": "your_bot_token_here",
+  "telegram_chat_id": "your_chat_id_here"
+}

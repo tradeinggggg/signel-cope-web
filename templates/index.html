@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SignalScope Web</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <h1>📈 SignalScope Dashboard</h1>
+    <button onclick="fetchSignals()">🔄 Refresh Signals</button>
+    <ul id="signalList"></ul>
+
+    <script>
+        function fetchSignals() {
+            fetch("/get_signals")
+                .then(res => res.json())
+                .then(data => {
+                    const list = document.getElementById("signalList");
+                    list.innerHTML = "";
+                    data.forEach(item => {
+                        const li = document.createElement("li");
+                        li.textContent = `${item.asset}: ${item.signal}` +
+                            (item.signal !== "No signal" ? ` @ ${item.entry} | TP: ${item.tp} | SL: ${item.sl}` : "");
+                        list.appendChild(li);
+                    });
+                });
+        }
+    </script>
+</body>
+</html>
