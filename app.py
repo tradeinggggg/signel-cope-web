@@ -1,5 +1,5 @@
 from flask import Flask, render_template, jsonify
-from signal_engine import SignalEngine
+from engine.signal_engine import SignalEngine
 from notifier import Notifier
 import json
 
